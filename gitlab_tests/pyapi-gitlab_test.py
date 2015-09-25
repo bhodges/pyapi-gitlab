@@ -315,6 +315,11 @@ class GitlabTest(unittest.TestCase):
         self.assertTrue(self.git.acceptmergerequest(self.project_id, merge["id"], "closed!"))
         self.assertEqual(self.git.getmergerequest(self.project_id, merge["id"])["state"], "merged")
 
+    def test_namespaces(self):
+        """Basic namespace tests"""
+        assert isinstance(self.git.getnamespaces(), list)
+        assert isinstance(self.git.searchnamespace('absent'), list)
+
     def test_notes(self):
 
         # issue wallnotes
